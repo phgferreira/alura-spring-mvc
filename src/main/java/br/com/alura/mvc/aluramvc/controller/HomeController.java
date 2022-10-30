@@ -5,27 +5,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.math.BigDecimal;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class HomeController {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @GetMapping("/home")
     public String home(Model model) {
-        Pedido pedido = new Pedido();
-        pedido.setNomeProduto("Smart TV LG 55UQ801C0SB LCD 4K 55\" 100V/240V");
-        pedido.setValorNegociado( new BigDecimal("3099.00"));
-        pedido.setDataEntrega(LocalDate.parse("2022-12-30") );
-        pedido.setUrlProduto("https://www.mercadolivre.com.br/smart-tv-lg-55uq801c0sb-lcd-4k-55-100v240v/p/MLB19641718?pdp_filters=item_id:MLB2900977372#searchVariation=MLB19641718&position=1&search_layout=grid&type=pad&tracking_id=7037e6a8-b613-41b5-90e5-e045f7f8a435&is_advertising=true&ad_domain=VQCATCORE_LST&ad_position=1&ad_click_id=ZmVlZjJhNzItOGJiMC00NTQ0LWJiNDAtNGY5ZjU3OGE5Njlh");
-        pedido.setUrlImagem("https://http2.mlstatic.com/D_NQ_NP_680264-MLA51736863750_092022-O.webp");
-        pedido.setDescricao("""
-                A LG é inovação e isso pode ser visto em cada um dos seus produtos tecnológicos, especialmente pensados \u200B\u200Bpara que toda a família aproveite mais a vida. Ter uma televisão LG é tirar proveito da mais alta qualidade do mercado.
-                Com Smart TV 55UQ801 você poderá acessar os aplicativos onde seu conteúdo favorito está localizado. Além disso, você pode navegar na web, interagir em redes sociais e se divertir com jogos de vídeo."""
-        );
 
-        model.addAttribute("pedidos", Arrays.asList(pedido) );
+        Query query = entityManager.createQuery("select p from Pedido p");
+        List<Pedido> pedidos = query.getResultList();
+
+        model.addAttribute("pedidos", pedidos );
         return "home";
     }
 }
