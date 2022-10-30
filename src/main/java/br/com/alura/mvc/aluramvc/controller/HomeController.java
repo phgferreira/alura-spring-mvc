@@ -26,7 +26,6 @@ public class HomeController {
         );
 
         model.addAttribute("pedidos", Arrays.asList(pedido) );
-
         return "home";
     }
 }
