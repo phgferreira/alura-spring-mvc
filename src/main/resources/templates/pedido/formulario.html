@@ -15,25 +15,25 @@
   <form action="/pedido/novo" method="post">
     <div>
       <label for="nomeProduto">Produto</label>
-      <input id="nomeProduto" type="text" placeholder="nome do produto">
+      <input id="nomeProduto" name="nomeProduto" type="text" placeholder="nome do produto">
       <small>Informe qual o nome do produto</small>
     </div>
 
     <div>
       <label for="urlProduto">URL</label>
-      <input id="urlProduto" type="text" placeholder="URL do produto">
+      <input id="urlProduto" name="urlProduto" type="text" placeholder="URL do produto">
       <small>Procure em um site do produto que você deseja e cole a URL da página aqui.</small>
     </div>
 
     <div>
       <label for="urlImagem">Imagem</label>
-      <input id="urlImagem" type="text" placeholder="URL da imagem">
+      <input id="urlImagem" name="urlImagem" type="text" placeholder="URL da imagem">
       <small>Copie a URL de uma boa imagem do produto e cole aqui para ajudar o comprador</small>
     </div>
 
     <div>
-      <label>Descrição</label>
-      <textarea placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="descricao" placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
     </div>
 
     <button type="submit">Cadastrar</button>
