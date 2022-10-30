@@ -2,11 +2,19 @@ package br.com.alura.mvc.aluramvc.dto;
 
 import br.com.alura.mvc.aluramvc.model.Pedido;
 
+import javax.validation.constraints.NotBlank;
+
 public class PedidoDto {
 
+    @NotBlank
     private String nomeProduto;
+
+    @NotBlank
     private String urlProduto;
+
+    @NotBlank
     private String urlImagem;
+
     private String descricao;
 
     @Override
