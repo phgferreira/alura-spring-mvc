@@ -5,8 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-/* Usando JPA precisa usar a anotação @Repository mas extendendos a CrudRepository não precisa,
-*  eu imagino que o motivo seja a anotação @NoRepositoryBean do CrudRepository */
+// Usando JPA precisa usar a anotação @Repository mas extendendos a CrudRepository não precisa
 public interface PedidoRepository extends CrudRepository<Pedido, Integer> {
 
     List<Pedido> findByNomeProduto(String nomeProduto);
