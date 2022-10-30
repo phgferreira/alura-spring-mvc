@@ -1,9 +1,14 @@
 package br.com.alura.mvc.aluramvc.model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Entity
 public class Pedido {
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     private String nomeProduto;
 
@@ -11,10 +16,13 @@ public class Pedido {
 
     private LocalDate dataEntrega;
 
+    // Em um teste que fiz a URL do produto tinha 358 caracteres e o padrão é 255
+    @Column(length = 400)
     private String urlProduto;
 
     private String urlImagem;
 
+    @Lob
     private String descricao;
 
     public String getNomeProduto() {
