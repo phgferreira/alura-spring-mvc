@@ -34,6 +34,7 @@ public class HomeController {
     public String aguardando(@PathVariable("status") String status, Model model) {
         Iterable<Pedido> pedidos = pedidoRepository.findByStatusPedido( StatusPedido.valueOf(status.toUpperCase()) );
         model.addAttribute("pedidos", pedidos );
+        model.addAttribute("status", status);
         return "home";
     }
 
