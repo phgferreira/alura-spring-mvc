@@ -5,10 +5,10 @@
 </head>
 <body>
 
-  <div th:replace="~{template::logo}"></div>
+  <div th:insert="~{template :: logo}"></div>
 
   <div class="container">
-    <div th:replace="~{template::titulo('Novo Pedido')}"></div>
+    <div th:replace="~{template :: titulo('Novo Pedido')}"></div>
 
     <div class="card mt-3">
       <form class="card-body needs-validation" th:object="${pedidoDto}" action="/pedido/novo" method="post">
@@ -44,5 +44,5 @@
     </div>
   </div>
 
-  <script th:replace="~{template::bootstrapScript}"></script></body>
+  <script th:replace="~{template :: bootstrapScript}"></script></body>
 </html>

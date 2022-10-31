@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-<head th:include="~{template::head}">
+<head th:insert="~{template :: head}">
   <title>Meus Pedidos</title>
 </head>
 <body>
 
-  <div th:replace="~{template::logo}"></div>
+  <div th:replace="~{template :: logo}"></div>
 
   <div class="container">
-    <div th:replace="~{template::titulo('Meus Pedidos')}"></div>
+    <div th:replace="~{template :: titulo('Meus Pedidos')}"></div>
 
     <nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between">
       <div class="navbar-nav">
@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <script th:replace="~{template::bootstrapScript}"></script>
+  <script th:replace="~{template :: bootstrapScript}"></script>
 
 </body>
 </html>
