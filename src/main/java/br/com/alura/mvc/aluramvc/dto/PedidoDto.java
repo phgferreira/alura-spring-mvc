@@ -1,6 +1,7 @@
 package br.com.alura.mvc.aluramvc.dto;
 
 import br.com.alura.mvc.aluramvc.model.Pedido;
+import br.com.alura.mvc.aluramvc.model.StatusPedido;
 
 import javax.validation.constraints.NotBlank;
 
@@ -65,6 +66,7 @@ public class PedidoDto {
         pedido.setUrlProduto(this.urlProduto);
         pedido.setUrlImagem(this.urlImagem);
         pedido.setDescricao(this.descricao);
+        pedido.setStatusPedido(StatusPedido.AGUARDANDO);
         return pedido;
     }
 }

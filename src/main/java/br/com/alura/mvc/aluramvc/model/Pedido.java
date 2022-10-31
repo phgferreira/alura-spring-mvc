@@ -17,13 +17,16 @@ public class Pedido {
     private LocalDate dataEntrega;
 
     // Em um teste que fiz a URL do produto tinha 358 caracteres e o padrão é 255
-    @Column(length = 400)
+    @Column(length = 500)
     private String urlProduto;
 
     private String urlImagem;
 
     @Lob
     private String descricao;
+
+    @Enumerated(EnumType.STRING)
+    private StatusPedido statusPedido;
 
     public String getNomeProduto() {
         return nomeProduto;
@@ -71,5 +74,21 @@ public class Pedido {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public StatusPedido getStatusPedido() {
+        return statusPedido;
+    }
+
+    public void setStatusPedido(StatusPedido statusPedido) {
+        this.statusPedido = statusPedido;
     }
 }

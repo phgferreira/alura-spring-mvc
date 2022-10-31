@@ -10,7 +10,7 @@
   <div class="container">
     <div th:replace="~{template :: titulo('Meus Pedidos')}"></div>
 
-    <nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between">
+    <nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
       <div class="navbar-nav">
         <a class="nav-item nav-link active" href="#">Todos</a>
         <a class="nav-item nav-link" href="#">Aguardando</a>
@@ -21,7 +21,12 @@
     </nav>
 
     <div class="card mb-3" th:each="pedido : ${pedidos}">
-      <div class="card-header" th:text="${pedido.nomeProduto}"></div>
+
+      <th:block th:switch="${pedido.statusPedido.name()}">
+        <div class="card-header alert alert-warning" th:case="'AGUARDANDO'" th:text="${pedido.nomeProduto}"></div>
+        <div class="card-header alert alert-success" th:case="'APROVADO'" th:text="${pedido.nomeProduto}"></div>
+        <div class="card-header alert alert-dark" th:case="'ENTREGUE'" th:text="${pedido.nomeProduto}"></div>
+      </th:block>
 
       <div class="card-body">
 
