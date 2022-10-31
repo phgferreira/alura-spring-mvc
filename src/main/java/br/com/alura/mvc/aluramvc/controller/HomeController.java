@@ -6,6 +6,7 @@ import br.com.alura.mvc.aluramvc.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,6 @@ public class HomeController {
     @GetMapping
     public String home(Model model) {
         Iterable<Pedido> pedidos = pedidoRepository.findAll();
-
         model.addAttribute("pedidos", pedidos );
         return "home";
     }
@@ -33,8 +33,12 @@ public class HomeController {
     @GetMapping("{status}")
     public String aguardando(@PathVariable("status") String status, Model model) {
         Iterable<Pedido> pedidos = pedidoRepository.findByStatusPedido( StatusPedido.valueOf(status.toUpperCase()) );
-
         model.addAttribute("pedidos", pedidos );
         return "home";
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String onError() {
+        return "redirect:/home";
     }
 }
