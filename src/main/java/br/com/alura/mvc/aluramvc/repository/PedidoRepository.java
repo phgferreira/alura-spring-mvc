@@ -1,6 +1,7 @@
 package br.com.alura.mvc.aluramvc.repository;
 
 import br.com.alura.mvc.aluramvc.model.Pedido;
+import br.com.alura.mvc.aluramvc.model.StatusPedido;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public interface PedidoRepository extends CrudRepository<Pedido, Integer> {
 
     List<Pedido> findByNomeProduto(String nomeProduto);
 
+    List<Pedido> findByStatusPedido(StatusPedido aguardando);
 }
